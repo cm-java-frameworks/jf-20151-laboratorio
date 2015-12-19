@@ -2,8 +2,6 @@ package cm.java.jpa.testes.consultas;
 
 import cm.java.jpa.consultas.ConsumidorConsultas;
 import cm.java.jpa.consultas.EnderecoConsultas;
-import cm.java.jpa.consultas.two.ConsumidorConsultas_;
-import cm.java.jpa.consultas.two.EnderecoConsultas_;
 import cm.java.jpa.testes.TestePersistenciaAbstrato;
 import javax.persistence.TypedQuery;
 import org.junit.After;
@@ -124,8 +122,12 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     // select c from Consumidor c where c.primeiroNome = 'Bruno'
     CriteriaBuilder montador = em.getCriteriaBuilder();
     CriteriaQuery<ConsumidorConsultas> consulta = montador.createQuery(ConsumidorConsultas.class);
-    Root<ConsumidorConsultas> c = consulta.from(ConsumidorConsultas.class);
-    consulta.select(c).where(montador.equal(c.get(ConsumidorConsultas_.primeiroNome), "Bruno"));
+    Root<ConsumidorConsultas> from = consulta.from(ConsumidorConsultas.class);
+    
+    
+    consulta.select(from).where(montador.equal(from.get("primeiroNome"), "Bruno"));
+    
+    
     assertEquals(2, em.createQuery(consulta).getResultList().size());
   }
 
@@ -136,8 +138,8 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     CriteriaBuilder montador = em.getCriteriaBuilder();
     CriteriaQuery<ConsumidorConsultas> consulta = montador.createQuery(ConsumidorConsultas.class);
     Root<ConsumidorConsultas> c = consulta.from(ConsumidorConsultas.class);
-    EntityType<ConsumidorConsultas> c_ = c.getModel();
-    consulta.select(c).where(montador.equal(c.get(c_.getSingularAttribute("primeiroNome")), "Bruno"));
+    EntityType<ConsumidorConsultas> from = c.getModel();
+    consulta.select(c).where(montador.equal(c.get(from.getSingularAttribute("primeiroNome")), "Bruno"));
     assertEquals(2, em.createQuery(consulta).getResultList().size());
   }
 
@@ -156,8 +158,8 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     // select c from Consumidor c where c.idade > 40
     CriteriaBuilder montador = em.getCriteriaBuilder();
     CriteriaQuery<ConsumidorConsultas> consulta = montador.createQuery(ConsumidorConsultas.class);
-    Root<ConsumidorConsultas> c = consulta.from(ConsumidorConsultas.class);
-    consulta.select(c).where(montador.greaterThan(c.get(ConsumidorConsultas_.idade), 40));
+    Root<ConsumidorConsultas> from = consulta.from(ConsumidorConsultas.class);
+    consulta.select(from).where(montador.greaterThan(from.<Integer>get("idade"), 40));
     assertEquals(4, em.createQuery(consulta).getResultList().size());
   }
 
@@ -190,13 +192,13 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     String pNome = "Bruno";
     consultaCriteria = montadorCriteria.createQuery(ConsumidorConsultas.class);
     consumidor = consultaCriteria.from(ConsumidorConsultas.class);
-    consultaCriteria.select(consumidor).where(montadorCriteria.equal(consumidor.get(ConsumidorConsultas_.primeiroNome), pNome));
+    consultaCriteria.select(consumidor).where(montadorCriteria.equal(consumidor.get("primeiroNome"), pNome));
     assertEquals(2, em.createQuery(consultaCriteria).getResultList().size());
 
     // select c from Consumidor c where c.primeiroNome = 'Bruno' (usando meta-modelo & parametros)
     consultaCriteria = montadorCriteria.createQuery(ConsumidorConsultas.class);
     consumidor = consultaCriteria.from(ConsumidorConsultas.class);
-    consultaCriteria.select(consumidor).where(montadorCriteria.equal(consumidor.get(ConsumidorConsultas_.primeiroNome), "Bruno"));
+    consultaCriteria.select(consumidor).where(montadorCriteria.equal(consumidor.get("primeiroNome"), "Bruno"));
     assertEquals(2, em.createQuery(consultaCriteria).getResultList().size());
 
     // select c from Consumidor c where c.primeiroNome = 'Bruno' (usando um predicado)
@@ -215,7 +217,7 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     // select c from Consumidor c where c.endereco.pais = 'AU' (usando meta-modelo)
     consultaCriteria = montadorCriteria.createQuery(ConsumidorConsultas.class);
     consumidor = consultaCriteria.from(ConsumidorConsultas.class);
-    consultaCriteria.select(consumidor).where(montadorCriteria.equal(consumidor.get(ConsumidorConsultas_.endereco).get(EnderecoConsultas_.pais), "AU"));
+    consultaCriteria.select(consumidor).where(montadorCriteria.equal(consumidor.get("endereco").get("pais"), "AU"));
     assertEquals(2, em.createQuery(consultaCriteria).getResultList().size());
 
     // select c from Consumidor c where c.idade > 40
@@ -227,7 +229,7 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     // select c from Consumidor c where c.idade > 40 (usando meta-modelo)
     consultaCriteria = montadorCriteria.createQuery(ConsumidorConsultas.class);
     consumidor = consultaCriteria.from(ConsumidorConsultas.class);
-    consultaCriteria.select(consumidor).where(montadorCriteria.greaterThan(consumidor.get(ConsumidorConsultas_.idade), 40));
+    consultaCriteria.select(consumidor).where(montadorCriteria.greaterThan(consumidor.<Integer>get("idade"), 40));
     assertEquals(4, em.createQuery(consultaCriteria).getResultList().size());
 
     // select c from Consumidor c where c.idade between 40 and 50
@@ -239,7 +241,7 @@ public class APICriteriaTesteIntegridade extends TestePersistenciaAbstrato {
     // select c from Consumidor c where c.idade between 40 and 50 (usando meta-modelo)
     consultaCriteria = montadorCriteria.createQuery(ConsumidorConsultas.class);
     consumidor = consultaCriteria.from(ConsumidorConsultas.class);
-    consultaCriteria.select(consumidor).where(montadorCriteria.between(consumidor.get(ConsumidorConsultas_.idade), 40, 50));
+    consultaCriteria.select(consumidor).where(montadorCriteria.between(consumidor.<Integer>get("idade"), 40, 50));
     assertEquals(2, em.createQuery(consultaCriteria).getResultList().size());
   }
 }

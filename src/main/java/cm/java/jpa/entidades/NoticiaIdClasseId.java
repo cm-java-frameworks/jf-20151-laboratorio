@@ -1,63 +1,69 @@
 package cm.java.jpa.entidades;
 
+import java.io.Serializable;
 
-public class NoticiaIdClasseId {
 
-  // ======================================
-  // =             Atributos              =
-  // ======================================
+public class NoticiaIdClasseId implements Serializable {
 
-  private String titulo;
-  private String idioma;
+	// ======================================
+	// = Atributos =
+	// ======================================
 
-  // ======================================
-  // =            Construtores            =
-  // ======================================
+	private String titulo;
+	private String idioma;
 
-  public NoticiaIdClasseId() {
-  }
+	// ======================================
+	// = Construtores =
+	// ======================================
 
-  // ======================================
-  // =          Getters & Setters         =
-  // ======================================
+	public NoticiaIdClasseId() {
+	}
 
-  public String getTitulo() {
-    return titulo;
-  }
+	// ======================================
+	// = Getters & Setters =
+	// ======================================
 
-  public void setTitulo(String titulo) {
-    this.titulo = titulo;
-  }
+	public String getTitulo() {
+		return titulo;
+	}
 
-  public String getIdioma() {
-    return idioma;
-  }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-  public void setIdioma(String idioma) {
-    this.idioma = idioma;
-  }
+	public String getIdioma() {
+		return idioma;
+	}
 
-  // ======================================
-  // =         hash, equals, toString     =
-  // ======================================
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+	// ======================================
+	// = hash, equals, toString =
+	// ======================================
 
-    NoticiaIdClasseId noticiaId = (NoticiaIdClasseId) o;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
-    if (!idioma.equals(noticiaId.idioma)) return false;
-    if (!titulo.equals(noticiaId.titulo)) return false;
+		NoticiaIdClasseId noticiaId = (NoticiaIdClasseId) o;
 
-    return true;
-  }
+		if (!idioma.equals(noticiaId.idioma))
+			return false;
+		if (!titulo.equals(noticiaId.titulo))
+			return false;
 
-  @Override
-  public int hashCode() {
-    int result = titulo.hashCode();
-    result = 31 * result + idioma.hashCode();
-    return result;
-  }
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = titulo.hashCode();
+		result = 31 * result + idioma.hashCode();
+		return result;
+	}
 }

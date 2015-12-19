@@ -15,8 +15,7 @@ import org.junit.Before;
  */
 public abstract class TestePersistenciaAbstrato {
 
-    protected static EntityManagerFactory emf
-            = Persistence.createEntityManagerFactory("cmJavaJPATeste");
+    protected static EntityManagerFactory emf = Persistence.createEntityManagerFactory("cmJavaJPATeste");
 
     protected EntityManager em;
     protected EntityTransaction tx;

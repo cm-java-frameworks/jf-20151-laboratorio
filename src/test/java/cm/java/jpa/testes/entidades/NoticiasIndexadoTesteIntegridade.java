@@ -41,9 +41,13 @@ public class NoticiasIndexadoTesteIntegridade extends TestePersistenciaAbstrato 
 
     assertEquals("Rio de Janeiro será sede das Olimpíadas em 2016", noticiaProcurada.getConteudo());
     assertEquals(4, noticiaProcurada.getComentarios().size());
-    assertEquals("Quarto comentario", noticiaProcurada.getComentarios().get(0).getConteudo());
-    assertEquals("Terceiro comentario", noticiaProcurada.getComentarios().get(1).getConteudo());
+    assertEquals("Terceiro comentario", noticiaProcurada.getComentarios().get(0).getConteudo());
+    assertEquals("Primeiro comentario", noticiaProcurada.getComentarios().get(1).getConteudo());
     assertEquals("Segundo comentario", noticiaProcurada.getComentarios().get(2).getConteudo());
-    assertEquals("Primeiro comentario", noticiaProcurada.getComentarios().get(3).getConteudo());
+    assertEquals("Quarto comentario", noticiaProcurada.getComentarios().get(3).getConteudo());
+    
+    
+    
+    
   }
 }

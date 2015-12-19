@@ -1,10 +1,12 @@
 package cm.java.jpa.testes.entidades;
 
 
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+
 import cm.java.jpa.entidades.ConsumidorPorMetodos;
 import cm.java.jpa.testes.TestePersistenciaAbstrato;
-import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
 
 
 public class ConsumidorPorMetodoTesteIntegridade extends TestePersistenciaAbstrato {

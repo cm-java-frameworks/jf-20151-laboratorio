@@ -1,66 +1,66 @@
 package cm.java.jpa.entidades;
 
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-
+@IdClass(NoticiaIdClasseId.class)
 @Entity
 @Table(name = "noticias")
-@IdClass(NoticiaIdClasseId.class)
-public class NoticiaClasseId {
+public class NoticiaClasseId implements Serializable {
 
-  // ======================================
-  // =             Atributos              =
-  // ======================================
+	// ======================================
+	// = Atributos =
+	// ======================================
 
-  @Id
-  private String titulo;
-  @Id
-  private String idioma;
-  
-  private String conteudo;
+	@Id
+	private String titulo;
+	@Id
+	private String idioma;
 
-  // ======================================
-  // =            Construtores            =
-  // ======================================
+	private String conteudo;
 
-  public NoticiaClasseId() {
-  }
+	// ======================================
+	// = Construtores =
+	// ======================================
 
-  public NoticiaClasseId(String tituloParam, String idiomaParam, String conteudoParam) {
-    titulo = tituloParam;
-    idioma = idiomaParam;
-    conteudo = conteudoParam;
-  }
+	public NoticiaClasseId() {
+	}
 
-  // ======================================
-  // =          Getters & Setters         =
-  // ======================================
+	public NoticiaClasseId(String tituloParam, String idiomaParam, String conteudoParam) {
+		titulo = tituloParam;
+		idioma = idiomaParam;
+		conteudo = conteudoParam;
+	}
 
-  public String getTitulo() {
-    return titulo;
-  }
+	// ======================================
+	// = Getters & Setters =
+	// ======================================
 
-  public void setTitulo(String titulo) {
-    this.titulo = titulo;
-  }
+	public String getTitulo() {
+		return titulo;
+	}
 
-  public String getIdioma() {
-    return idioma;
-  }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-  public void setIdioma(String idioma) {
-    this.idioma = idioma;
-  }
+	public String getIdioma() {
+		return idioma;
+	}
 
-  public String getConteudo() {
-    return conteudo;
-  }
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
 
-  public void setConteudo(String conteudo) {
-    this.conteudo = conteudo;
-  }
+	public String getConteudo() {
+		return conteudo;
+	}
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
+	}
 }

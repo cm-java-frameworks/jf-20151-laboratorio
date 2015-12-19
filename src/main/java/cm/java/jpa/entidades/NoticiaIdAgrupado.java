@@ -1,9 +1,11 @@
 package cm.java.jpa.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class NoticiaIdAgrupado {
+public class NoticiaIdAgrupado implements Serializable {
 
   // ======================================
   // =             Atributos              =

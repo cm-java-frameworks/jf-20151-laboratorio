@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @AttributeOverrides({
         @AttributeOverride(name = "id", column = @Column(name = "livro_id")),
         @AttributeOverride(name = "titulo", column = @Column(name = "livro_titulo")),
-        @AttributeOverride(name = "description", column = @Column(name = "livro_descricao"))
+        @AttributeOverride(name = "descricao", column = @Column(name = "livro_descricao"))
 })
 public class LivroHerancaPorClasseSobrescrita extends ItemHerancaPorClasseSobrescrita {
 
@@ -23,6 +23,7 @@ public class LivroHerancaPorClasseSobrescrita extends ItemHerancaPorClasseSobres
   private String editora;
   private Integer nroDePaginas;
   private Boolean ilustracoes;
+  private String descricao;
 
   // ======================================
   // =            Construtores            =
@@ -74,4 +75,14 @@ public class LivroHerancaPorClasseSobrescrita extends ItemHerancaPorClasseSobres
   public void setIlustracoes(Boolean ilustracoes) {
     this.ilustracoes = ilustracoes;
   }
+
+public String getDescricao() {
+	return descricao;
+}
+
+public void setDescricao(String descricao) {
+	this.descricao = descricao;
+}
+  
+  
 }

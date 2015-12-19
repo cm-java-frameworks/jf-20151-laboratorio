@@ -10,16 +10,16 @@ import javax.persistence.Table;
 
 
 
-@Entity
 @Table(name = "T_consumidor_metodos")
-@Access(AccessType.FIELD)
+@Entity
+@Access(AccessType.PROPERTY)
 public class ConsumidorPorMetodos {
 
   // ======================================
   // =             Atributos              =
   // ======================================
-  @Id
-  @GeneratedValue
+  //@ Id
+  //@ GeneratedValue
   private Long id;
   @Column(name = "primeiro_nome", nullable = false, length = 50)
   private String primeiroNome;
@@ -48,6 +48,7 @@ public class ConsumidorPorMetodos {
   // ======================================
 
   @Id
+  @GeneratedValue
   public Long getId() {
     return id;
   }

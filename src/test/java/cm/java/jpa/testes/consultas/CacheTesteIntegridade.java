@@ -73,7 +73,6 @@ public class CacheTesteIntegridade extends TestePersistenciaAbstrato {
 
     cache.evict(ConsumidorCache.class);
 
-    // After clearing the cache Customer should not be in the cache
     // Depois de limpar o cache, o ConsumidorCache não deveria estar no cache
     assertFalse(cache.contains(ConsumidorCache.class, consumidor.getId()));
   }

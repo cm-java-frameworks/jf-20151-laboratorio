@@ -14,7 +14,7 @@ public class ArtistaTesteIntegracao extends TestePersistenciaAbstrato {
   // ======================================
 
   @Test
-  public void shouldCreateThreeCDsAndFourArtists() throws Exception {
+  public void deveriaCriarTresCDsEQuatroArtistas() throws Exception {
 
     Artista ringo = new Artista("Ringo", "Starr");
     Artista john = new Artista("John", "Lenon");

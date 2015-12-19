@@ -1,5 +1,7 @@
 package cm.java.jpa.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -7,9 +9,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "noticias")
-public class NoticiaAgrupado {
+public class NoticiaAgrupado implements Serializable{
 
-  // ======================================
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3455472349456309140L;
+// ======================================
   // =             Atributos              =
   // ======================================
 
